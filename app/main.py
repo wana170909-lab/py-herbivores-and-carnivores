@@ -1,8 +1,18 @@
 from __future__ import annotations
 
 
+class AliveList(list):
+    """Custom list container that formats Animal.alive output."""
+
+    def __repr__(self) -> str:
+        return "[" + ", ".join(repr(animal) for animal in self) + "]"
+
+    def __str__(self) -> str:
+        return self.__repr__()
+
+
 class Animal:
-    alive: list["Animal"] = []
+    alive: AliveList = AliveList()
 
     def __init__(
         self,
